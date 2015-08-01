@@ -2,10 +2,13 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgres
 
 Create a super user om database
 
+createdb -E UTF-8 <db name>
+
 ```
 sudo -i -u postgres
 psql <db name>
 
 CREATE USER <user> WITH PASSWORD '<password>';
 GRANT ALL PRIVILEGES ON DATABASE "<database name>" to <user>;
+ALTER USER <user> CREATEDB;
 ```
