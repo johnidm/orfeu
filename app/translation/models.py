@@ -20,16 +20,16 @@ class Language(models.Model):
 
 class Sentence(models.Model):
 
-    translate_from = models.ForeignKey(Language, related_name='translate_from')
-    translate_to = models.ForeignKey(Language, related_name='translate_to')
+    translate_from = models.ForeignKey(Language, related_name='translate_from', null=False)
+    translate_to = models.ForeignKey(Language, related_name='translate_to', null=False)
 
     phrase = models.CharField(max_length=100, null=False, blank=False)
     translation = models.CharField(max_length=100, null=False, blank=False)
 
-    comments = models.TextField(max_length=500)
+    comments = models.TextField(max_length=500, blank=False, default='')
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return '{0} to {1} - {2}'.format(self.translate_from, self.translate_to, self.phrase)
+        return '{0} to {1} - {2}'.format(self.translate_from.name, self.translate_to.name, self.phrase)
