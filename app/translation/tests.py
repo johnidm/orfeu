@@ -1,7 +1,7 @@
 from django.test import TestCase
 
-from translation.models import Language
-from translation.models import Sentence
+from translation.factories import LanguageFactory
+
 
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -10,11 +10,10 @@ from rest_framework.test import APITestCase
 class SentenceTests(TestCase):
     pass
 
-class LanguageTests(TestCase):
+class LanguageModelTests(TestCase):
 
     def test_str(self):
-        language = Language(name='pt-BR', full_name='Portuguese - Brasil')
-        language.save()
+        language = LanguageFactory.create(name='pt-BR', full_name='Portuguese - Brasil')
 
         actual = str(language)
         expected = 'Portuguese - Brasil (pt-BR)'
@@ -22,8 +21,7 @@ class LanguageTests(TestCase):
 
 
     def test_slug(self):
-        language = Language(name='en-US', full_name='English - United States')
-        language.save()
+        language = LanguageFactory.create(name='en-US', full_name='English - United States')
 
         actual = language.slug
 
@@ -31,11 +29,10 @@ class LanguageTests(TestCase):
         self.assertEquals(actual, expected)
 
 
-class LanguageTests(APITestCase):
+class LanguageAPITests(APITestCase):
 
     def setUp(self):
-        self.language = Language(name='en-US', full_name='English - United States')
-        self.language.save()
+        self.language = LanguageFactory.create(name='en-US', full_name='English - United States')
 
         self.url = '/api/language/';
         self.url_detail = '{}{}/'.format(self.url, self.language.id)
@@ -43,10 +40,9 @@ class LanguageTests(APITestCase):
 
     def test_get_all_languages(self):
 
-        Language(name='pt-BR', full_name='Portuguese - Brazil').save()
+        LanguageFactory.create(name='pt-BR', full_name='Portuguese - Brazil')
 
         response = self.client.get(self.url, format='json')
-
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
