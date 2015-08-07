@@ -7,7 +7,6 @@ from translation.models import Sentence
 from translation.utils import Util
 
 
-
 class LanguageFactory(factory.django.DjangoModelFactory):
 
     class Meta:

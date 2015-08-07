@@ -4,9 +4,11 @@ from django.contrib import admin
 from rest_framework.routers import DefaultRouter
 
 from translation.views import LanguageViewSet
+from translation.views import SentenceViewSet
 
 router = DefaultRouter()
 router.register(r'language', LanguageViewSet)
+router.register(r'sentence', SentenceViewSet)
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),

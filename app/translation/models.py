@@ -26,7 +26,7 @@ class Sentence(models.Model):
     phrase = models.CharField(max_length=100, null=False, blank=False)
     translation = models.CharField(max_length=100, null=False, blank=False)
 
-    comments = models.TextField(max_length=500)
+    comments = models.TextField(max_length=500, blank=False, default='')
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

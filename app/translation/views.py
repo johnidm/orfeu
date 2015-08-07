@@ -1,7 +1,10 @@
 from rest_framework import viewsets
 
 from translation.models import Language
+from translation.models import Sentence
+
 from translation.serializers import LanguageSerializer
+from translation.serializers import SentenceSerializer
 
 
 '''
@@ -21,3 +24,8 @@ not allowed HTTP methods
 class LanguageViewSet(viewsets.ModelViewSet):
 	queryset = Language.objects.order_by('created_at')
 	serializer_class = LanguageSerializer
+
+
+class SentenceViewSet(viewsets.ModelViewSet):
+	queryset = Sentence.objects.order_by('created_at')
+	serializer_class = SentenceSerializer
