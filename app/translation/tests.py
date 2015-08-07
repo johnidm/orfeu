@@ -1,9 +1,14 @@
 from django.test import TestCase
-from languages.models import Language
+
+from translation.models import Language
+from translation.models import Sentence
 
 from rest_framework import status
 from rest_framework.test import APITestCase
 
+
+class SentenceTests(TestCase):
+    pass
 
 class LanguageTests(TestCase):
 

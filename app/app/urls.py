@@ -3,7 +3,7 @@ from django.contrib import admin
 
 from rest_framework.routers import DefaultRouter
 
-from languages.views import LanguageViewSet
+from translation.views import LanguageViewSet
 
 router = DefaultRouter()
 router.register(r'language', LanguageViewSet)

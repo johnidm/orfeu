@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 
-from languages.models import Language
-from languages.serializers import LanguageSerializer
+from translation.models import Language
+from translation.serializers import LanguageSerializer
 
 
 '''

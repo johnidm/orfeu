@@ -40,7 +40,7 @@ INSTALLED_APPS = (
 
     'rest_framework',
 
-    'languages',
+    'translation',
 )
 
 MIDDLEWARE_CLASSES = (
