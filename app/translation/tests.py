@@ -1,6 +1,7 @@
 from django.test import TestCase
 
 from translation.factories import LanguageFactory
+from translation.factories import SentenceFactory
 
 
 from rest_framework import status
@@ -8,7 +9,17 @@ from rest_framework.test import APITestCase
 
 
 class SentenceTests(TestCase):
-    pass
+    def test_str(self):
+
+        phrase="How are you?"
+        sentence = SentenceFactory.create(phrase=phrase)
+
+        actual = str(sentence)
+        expected = '{0} to {1} - {2}'.format(sentence.translate_from.name,
+            sentence.translate_to.name, phrase)
+
+        self.assertEquals(actual, expected)
+
 
 class LanguageModelTests(TestCase):
 
