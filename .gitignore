@@ -1,3 +1,8 @@
 app/app/__pycache__/
 app/translation/__pycache__/
 app/translation/migrations/__pycache__/
+
+
+venv
+*.pyc
+staticfiles
