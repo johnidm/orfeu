@@ -11,6 +11,8 @@ router.register(r'language', LanguageViewSet)
 router.register(r'sentence', SentenceViewSet)
 
 urlpatterns = [
+    url(r'^jet/', include('jet.urls', 'jet')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^api/', include(router.urls))
+    url(r'^api/', include(router.urls)),
+    url(r'^docs/', include('rest_framework_swagger.urls')),
 ]
